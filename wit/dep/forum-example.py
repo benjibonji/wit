@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 import pandas as pd
 import urllib2
 
@@ -38,6 +39,7 @@ trn, levs = formatter.format_symmetric(train, ['obj1', 'obj2'], 'match')
 
 # Compile and train classifier
 classifier = SiameseClassifier(trn, levs)
+experiment = Experiment(project_name='bkj/wit')
 classifier.fit(nb_epoch = 15, batch_size = 128)
 
 preds         = classifier.predict(trn['x'])[:,1]

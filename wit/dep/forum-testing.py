@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 import pandas as pd
 import urllib2
 
@@ -49,6 +50,7 @@ val = pairwise_train.make_strat(n_pos = 100, neg_prop = .01) # Downsampling nega
 val = formatter.format(val, ['obj1'], 'hash1')
 
 classifier = SiameseClassifier(trn, levs)
+experiment = Experiment(project_name='bkj/wit')
 classifier.fit(nb_epoch = 15, batch_size = 128)
 
 

@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 import pandas as pd
 import urllib2
 
@@ -80,6 +81,7 @@ model.compile(loss = 'triplet_cosine', optimizer = 'adam')
 
 for i in range(60):
     ms = modsel(train.shape[0], N = 3)
+    experiment = Experiment(project_name='bkj/wit')
     fitting = model.fit(
         trn['x'][0][ms], trn['x'][0][ms], 
         nb_epoch   = 3,

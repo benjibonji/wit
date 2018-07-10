@@ -1,6 +1,7 @@
 # --
 # WIT :: String similarity example
 
+from comet_ml import Experiment
 import sys
 sys.path.append('..')
 from wit import *
@@ -21,6 +22,7 @@ train, levs = formatter.format(data, ['obj'], 'hash', custom=True)
 # Compile and train classifier
 print 'WIT :: Compiling classifier'
 classifier = StringClassifier(train, levs)
+experiment = Experiment(project_name='bkj/wit')
 classifier.fit(batch_size = 1000, nb_epoch = 10)
 
 # Create test dataset

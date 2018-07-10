@@ -1,6 +1,7 @@
 # --
 # Load deps
 
+from comet_ml import Experiment
 import keras
 import pandas as pd
 import urllib2
@@ -86,6 +87,7 @@ model.compile(loss = 'triplet_cosine', optimizer = 'adam')
 N = 3
 for i in range(N):
     ms = modsel(train.shape[0], N = 3)
+    experiment = Experiment(project_name='bkj/wit')
     _  = model.fit(
         trn['x'][0][ms], trn['x'][0][ms], 
         nb_epoch   = 1,

@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 import pandas as pd
 import urllib2
 
@@ -79,6 +80,7 @@ trn, val, levs = formatter.format_symmetric_with_val(train, ['obj1', 'obj2'], 'm
 
 # Compile and train classifier
 classifier = SiameseClassifier(trn, val, levs)
+experiment = Experiment(project_name='bkj/wit')
 classifier.fit()
 
 # -- Apply to an artificially split dataset

@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 import re
 import numpy as np
 import pandas as pd
@@ -270,6 +271,7 @@ class StringClassifier(WitClassifier):
         kwargs['validation_split'] = 0.2
         kwargs['show_accuracy']    = True
         
+        experiment = Experiment(project_name='bkj/wit')
         return self.model.fit(**kwargs)
     
     def classify_string(self, string):
